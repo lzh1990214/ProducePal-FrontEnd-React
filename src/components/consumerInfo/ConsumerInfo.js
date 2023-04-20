@@ -22,7 +22,7 @@ function ConsumerInfo(props) {
                 {props.userType ?
                     <button className="btn btn-primary visually-hidden">
                         Hidden
-                    </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
                     </button>}
             </div>
@@ -85,11 +85,11 @@ function ConsumerInfo(props) {
             </div>
 
             {/* <!-- Modal --> */}
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="consumerModal" tabindex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="consumerModalLabel">Modal title</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -99,15 +99,15 @@ function ConsumerInfo(props) {
                             </div>
                             <div className="form-group">
                                 <label>Address</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.address} />
+                                <input type="text" className="form-control text-muted" id="address-input" value={props.address} />
                             </div>
                             <div className="form-group">
                                 <label>Contact</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.contact} />
+                                <input type="text" className="form-control text-muted" id="contact-input" value={props.contact} />
                             </div>
                             <div className="form-group">
                                 <label>Memberships</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.memberships} />
+                                <input type="text" className="form-control text-muted" id="membership-input" value={props.memberships} />
                             </div>
                             <div className="form-group">
                                 <label>Description</label>
