@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function NavTabs({ currentPage, handlePageChange }) {
+function NavBar({ currentPage, handlePageChange }) {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -54,4 +54,4 @@ function NavTabs({ currentPage, handlePageChange }) {
 
 }
 
-export default NavTabs;
+export default NavBar;
