@@ -1,9 +1,11 @@
 import React from "react";
 // import Home from "./pages/Home";
 // import Dashboard from "./pages/Dashboard";
-import ConsumerProfile from "./pages/ConsumerProfile";
+import Profile from "./pages/Profile";
+// import VendorInfo from "./components/VendorInfo";
 
 // const App = () => <Home />;
 // const App = () => <Dashboard />;
-const App = () => <ConsumerProfile />;
+const App = () => <Profile />;
+// const App = () => <VendorInfo />
 export default App;

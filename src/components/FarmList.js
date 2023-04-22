@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import FarmCard from './FarmCard';
 
 const farms = [
-    { name: 'Farm A', city: 'New York', description: 'Grass-fed beef in rural farm near New York.', }, { name: 'Farm B', city: 'Los Angeles', description: 'Organic produce in the hills of California near Los Angeles.', },
-    { name: 'Farm C', city: 'San Francisco', description: 'Sustainable produce in farms near San Francisco', },
-    { name: 'Farm D', city: 'Chicago', description: 'Organic crops in the farmland of corns near Chicago.', },];
+    { id: '1', vendorName: 'Farm A', vendorAddress: 'New York', vendorDescription: 'Grass-fed beef in rural farm near New York.', },
+    { id: '2', vendorName: 'Farm B', vendorAddress: 'Los Angeles', vendorDescription: 'Organic produce in the hills of California near Los Angeles.', },
+    { id: '3', vendorName: 'Farm C', vendorAddress: 'San Francisco', vendorDescription: 'Sustainable produce in farms near San Francisco', },
+    { id: '4', vendorName: 'Farm D', vendorAddress: 'Chicago', vendorDescription: 'Organic crops in the farmland of corns near Chicago.', },
+];
 
 const FarmList = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -23,10 +25,10 @@ const FarmList = () => {
         } else {
             const filteredResults = farms
                 .filter((farm) =>
-                    farm.city.toLowerCase().includes(value.toLowerCase())
+                    farm.vendorAddress.toLowerCase().includes(value.toLowerCase())
                 )
                 .slice(0, 6)
-                .map((farm) => farm.city);
+                .map((farm) => farm.vendorAddress);
             setSearchResults(filteredResults);
         }
     };
@@ -42,7 +44,7 @@ const FarmList = () => {
             setSearchResults([]);
         } else {
             const filteredFarms = farms.filter((farm) =>
-                farm.city.toLowerCase().includes(searchTerm.toLowerCase())
+                farm.vendorAddress.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setSelectedResult(filteredFarms);
             setSearchError(filteredFarms.length === 0 ? 'No results found' : '');
@@ -95,11 +97,11 @@ const FarmList = () => {
                     {/* if the user selected a result from the dropdown list, it will show the farm location that matches the selected Result */}
                     {selectedResult.length > 0 ? (
                         selectedResult.map((farm) => (
-                            <FarmCard key={farm.name} farm={farm} />
+                            <FarmCard key={farm.id} farm={farm} />
                         ))
                     ) :
                         (farms.map((farm) => (
-                            <FarmCard key={farm.name} farm={farm} />
+                            <FarmCard key={farm.id} farm={farm} />
                         )))}
                 </div>
             </div>

@@ -13,9 +13,9 @@ const FarmCard = ({ farm }) => {
                 </div>
                 <div className="col-md-6">
                     <div className="card-body">
-                        <h5 className="card-title">{farm.name}</h5>
-                        <h6 className="card-subtitle mb-4">{farm.city}</h6>
-                        <p className="card-text">{farm.description}</p>
+                        <h5 className="card-title">{farm.vendorName}</h5>
+                        <h6 className="card-subtitle mb-4">{farm.vendorAddress}</h6>
+                        <p className="card-text">{farm.vendorDescription}</p>
                     </div>
                 </div>
             </div>

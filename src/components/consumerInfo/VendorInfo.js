@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './consumerInfo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faPhone, faMedal, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg-icons';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function ConsumerInfo(props) {
@@ -19,16 +19,17 @@ function ConsumerInfo(props) {
     return (
         <div className="container-fluid">
             <div className="toggle-container text-end">
-                {props.vendorStatus ?
-                    <button className="btn btn-primary visually-hidden">
-                        Hidden
-                    </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                {props.currentUser
+                    ? <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
+                    </button>
+                    : <button className="btn btn-primary visually-hidden">
+                        Hidden
                     </button>}
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
-                    <h1>{props.firstName} {props.lastName}</h1>
+                    <h1>{props.vendorName}</h1>
                 </div>
             </div>
             <div className="row align-items-center">
@@ -41,7 +42,7 @@ function ConsumerInfo(props) {
                         alt=""
                         className="img-fluid "
                     />
-                    {!props.vendorStatus && showCamera && (
+                    {props.currentUser && showCamera && (
                         <div className="camera-overlay">
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
@@ -54,7 +55,7 @@ function ConsumerInfo(props) {
                             <h3>About</h3>
                         </div>
                         <div className="">
-                            <p>{props.biography}</p>
+                            <p>{props.vendorDescription}</p>
                         </div>
 
                         <div className="mt-5">
@@ -62,7 +63,7 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address}</p>
+                                    <p>{props.vendorAddress}</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -73,10 +74,10 @@ function ConsumerInfo(props) {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faMedal} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faCarrot} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
-                                    <h5>Memberships</h5>
-                                    <p>{props.memberships}</p>
+                                    <h5>Farm Products</h5>
+                                    <p>Click to view and purchase products from our farm</p>
                                 </div>
                             </div>
                         </div>
@@ -94,28 +95,24 @@ function ConsumerInfo(props) {
                         </div>
                         <div class="modal-body">
                             <div className="form-group">
-                                <label>First Name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.firstName} />
+                                <label>Farm name</label>
+                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.vendorName} />
                             </div>
                             <div className="form-group">
-                                <label>Last Name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.lastName} />
-                            </div>
-                            <div className="form-group">
-                                <label>Address</label>
-                                <input type="text" className="form-control text-muted" id="address-input" value={props.address} />
+                                <label>Farm address</label>
+                                <input type="text" className="form-control text-muted" id="address-input" value={props.vendorAddress} />
                             </div>
                             <div className="form-group">
                                 <label>Contact</label>
                                 <input type="text" className="form-control text-muted" id="contact-input" value={props.email} />
                             </div>
-                            {/* <div className="form-group">
-                                <label>Memberships</label>
-                                <input type="text" className="form-control text-muted" id="membership-input" value={props.memberships} />
-                            </div> */}
                             <div className="form-group">
-                                <label>Biography</label>
-                                <textarea className="form-control text-muted" id="description-input" rows="5" value={props.biography}></textarea>
+                                <label>Pickup location</label>
+                                <input type="text" className="form-control text-muted" id="pickupLocation-input" value={props.pickupLocation} />
+                            </div>
+                            <div className="form-group">
+                                <label>About</label>
+                                <textarea className="form-control text-muted" id="description-input" rows="5" value={props.vendorDescription}></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

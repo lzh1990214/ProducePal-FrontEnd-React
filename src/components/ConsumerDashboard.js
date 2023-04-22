@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
 
 function ConsumerDashboard({ firstName, lastName, address }) {
     return (
@@ -16,29 +16,31 @@ function ConsumerDashboard({ firstName, lastName, address }) {
                     <div className="card">
                         <div className="card-body">
                             <FontAwesomeIcon icon={faUser} size="3x" />
-                            <h5 className="card-title">My profile</h5>
-                            <p className="card-text">Profile description goes here.</p>
-                            <button className="btn btn-primary">Edit</button>
+                            <h5 className="card-title mt-3">My profile</h5>
+                            <p className="card-text">This is my profile description.</p>
+                            {/* This edit button navigates to 'ConsumerProfile.js' component */}
+                            <button className="btn btn-primary">View</button>
                         </div>
                     </div>
                 </div>
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="card-body">
-                            <FontAwesomeIcon icon={faUser} size="3x" />
-                            <h5 className="card-title">Order history</h5>
-                            <p className="card-text">Profile description goes here.</p>
-                            <button className="btn btn-primary">Edit</button>
+                            <FontAwesomeIcon icon={faBook} size="3x" />
+                            <h5 className="card-title mt-3">Order history</h5>
+                            <p className="card-text">Review my order history.</p>
+                            <button className="btn btn-primary">View</button>
                         </div>
                     </div>
                 </div>
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="card-body">
-                            <FontAwesomeIcon icon={faUser} size="3x" />
-                            <h5 className="card-title">Search farm products</h5>
-                            <p className="card-text">Profile description goes here.</p>
-                            <button className="btn btn-primary">Edit</button>
+                            <FontAwesomeIcon icon={faCarrot} size="3x" />
+                            <h5 className="card-title mt-3">Search farm products</h5>
+                            <p className="card-text">Look for farm products in different farms.</p>
+                            {/* This edit button navigates to 'Home.js' component */}
+                            <button className="btn btn-primary">View</button>
                         </div>
                     </div>
                 </div>

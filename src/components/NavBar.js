@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 function NavBar({ currentPage, handlePageChange }) {
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -28,7 +29,6 @@ function NavBar({ currentPage, handlePageChange }) {
             <li className="nav-item">
               <a href="#"
                 onClick={() => handlePageChange('Home')}
-                // Check to see if the currentPage is `home`, and if so, the element uses the active link class from bootstrap. Otherwise, set the class to a normal nav-link
                 className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Home' ? 'home' : 'home-fade'}>Home</a>
             </li>
             <li className="nav-item">
