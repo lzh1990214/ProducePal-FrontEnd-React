@@ -19,13 +19,9 @@ const CartItem = ({ item }) => {
         dispatch({ type: 'MINUS_ITEM', payload: item });
     }
 
-    const handleQuantityChange = (event) => {
-        const newQuantity = parseInt(event.target.value);
-        if (newQuantity > 1) {
-            const updatedItem = { ...item, quantity: newQuantity };
-            dispatch({ type: 'UPDATE_QUANTITY', payload: updatedItem });
-        }
-    };
+
+
+
 
     return (
         <div className="d-flex align-items-center justify-content-between my-3">
@@ -33,9 +29,8 @@ const CartItem = ({ item }) => {
                 <h5>{item.productName}</h5>
                 <div className="input-group  input-group-sm mb-3">
                     <button className="btn btn-outline-secondary" type="button" onClick={handleMinus}>-</button>
-                    <input type="text" className="form-control" placeholder={`${item.quantity}`} onChange={handleQuantityChange} />
+                    <input type="number" className="form-control" placeholder={item.quantity} />
                     <button className="btn btn-outline-secondary" type="button" onClick={handlePlus}>+</button>
-
                 </div>
                 <p className="text-muted">${(item.price * item.quantity).toFixed(2)}</p>
             </div>

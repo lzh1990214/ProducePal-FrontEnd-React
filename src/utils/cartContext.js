@@ -2,7 +2,6 @@ import React, { createContext, useReducer, useEffect } from 'react';
 
 export const CartContext = createContext();
 
-// const CART_STORAGE_KEY = 'farm_cart';
 
 // initial cart state: an empty array and 0 items
 const initialState = {
@@ -47,21 +46,9 @@ const cartReducer = (state, action) => {
                     return {
                         ...state,
                         items: updatedItems,
-                        total: state.total + (action.payload.price * action.payload.quantity)
+                        total: state.total - (action.payload.price * action.payload.quantity)
                     }
                 }
-            }
-
-        case 'UPDATE_QUANTITY':
-            const updateItemIndex = state.items.findIndex(item => item._id === action.payload._id);
-            if (updateItemIndex !== -1) {
-                const updatedItems = [...state.items];
-                updatedItems[updateItemIndex].quantity = action.payload.quantity;
-                return {
-                    ...state,
-                    items: updatedItems,
-                    total: action.payload.price * action.payload.quantity
-                };
             }
 
 
