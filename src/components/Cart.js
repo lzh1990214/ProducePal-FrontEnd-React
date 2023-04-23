@@ -48,7 +48,7 @@ const Cart = () => {
         return sum.toFixed(2);
     }
 
-    console.log(state);
+    // console.log(state);
 
     // function submitCheckout() {
     //     const productIds = [];

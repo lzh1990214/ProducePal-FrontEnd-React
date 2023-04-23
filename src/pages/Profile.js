@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UserToggle from '../components/UserToggle';
-import ConsumerInfo from '../components/consumerInfo/ConsumerInfo';
-import VendorInfo from '../components/consumerInfo/VendorInfo';
+import ConsumerInfo from '../components/userInfo/ConsumerInfo';
+import VendorInfo from '../components/userInfo/VendorInfo';
 import NavBar from '../components/NavBar';
 
 

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg-icons';
 // import ConsumerEditModal from './ConsumerEditModal';
 
-function ConsumerInfo(props) {
+function VendorInfo(props) {
 
     const [showCamera, setShowCamera] = useState(false);
 
@@ -127,4 +127,4 @@ function ConsumerInfo(props) {
     );
 }
 
-export default ConsumerInfo;
+export default VendorInfo;

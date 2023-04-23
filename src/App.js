@@ -4,7 +4,6 @@ import React from "react";
 // import Profile from "./pages/Profile";
 // import VendorInfo from "./components/VendorInfo";
 import ProductInventory from "./pages/ProductInventory";
-// import { CartProvider } from './utils/cartContext';
 import { ProductProvider } from './utils/GlobalState';
 
 
@@ -12,13 +11,7 @@ import { ProductProvider } from './utils/GlobalState';
 // const App = () => <Dashboard />;
 // const App = () => <Profile />;
 // const App = () => <VendorInfo />;
-// const App = () => {
-//     return (
-//         <CartProvider>
-//             <ProductInventory />
-//         </CartProvider>
-//     );
-// };
+
 const App = () => {
     return (
         <ProductProvider>

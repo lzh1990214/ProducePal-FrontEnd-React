@@ -72,9 +72,14 @@ const ProductInventory = () => {
 
     return (
         <div className="container my-2">
-            <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
-            <Cart />
-            <h2>Farm Products</h2>
+            <div className='row mb-3'>
+                <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
+            </div>
+            <div className='row'>
+                {vendorStatus ? <br /> : <Cart />}
+            </div>
+            {vendorStatus ? <h2>My Farm Products</h2> : <h2>Farm Products</h2>}
+
             {/* categories selection menu */}
             <div className="dropdown mb-3 text-end">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -94,7 +99,7 @@ const ProductInventory = () => {
                     ))}
                 </ul>
             </div>
-            {/* product cards */}
+            {/* array of product cards */}
             {state.products.length ? (
                 <div className="row is-flex">
                     {filterProducts().map((product) => (
@@ -116,6 +121,8 @@ const ProductInventory = () => {
             ) : (
                 <h3>No products in this farm yet !</h3>
             )}
+
+
         </div>
         // console.log(state)
 
