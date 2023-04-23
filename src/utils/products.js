@@ -148,21 +148,3 @@ const products = [
 export default products;
 
 
-{/* <div className="dropdown">
-    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        {selectedCategory}
-    </button>
-    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        {categories.map((category, index) => (
-            <li>
-                <a
-                    key={index}
-                    className="dropdown-item"
-                    onClick={() => handleCategorySelect(category)}
-                >
-                    {category}
-                </a>
-            </li>
-        ))}
-    </ul>
-</div> */}

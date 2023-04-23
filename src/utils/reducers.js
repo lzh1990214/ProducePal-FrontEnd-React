@@ -9,10 +9,11 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
-} from './actions';
+} from '../utils/actions';
 
 // The reducer is a function that accepts the current state and an action. It returns a new state based on that action.
 export const reducer = (state, action) => {
+  // console.log(UPDATE_CURRENT_CATEGORY, action);
   switch (action.type) {
     // Returns a copy of state with an update products array. We use the action.products property and spread it's contents into the new array.
     case UPDATE_PRODUCTS:
@@ -79,11 +80,11 @@ export const reducer = (state, action) => {
         ...state,
         categories: [...action.categories],
       };
-
     case UPDATE_CURRENT_CATEGORY:
       return {
         ...state,
         currentCategory: action.currentCategory,
+        currentCategoryName: action.currentCategoryName
       };
 
     // Return the state as is in the event that the `action.type` passed to our reducer was not accounted for by the developers
