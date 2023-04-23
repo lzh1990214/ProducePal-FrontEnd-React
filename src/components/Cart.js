@@ -64,48 +64,100 @@ const Cart = () => {
     //     });
     // }
 
-    if (!state.cartOpen) {
-        return (
-            <div className="cart-closed" onClick={toggleCart}>
-                <button className="btn btn-primary" role="img" aria-label="">
-                    ({state.cart.length}) CART
-                </button>
-            </div>
-        );
-    }
+    // if (!state.cartOpen) {
+    //     return (
+    //         <div className="cart-closed" onClick={toggleCart} >
+    //             <button className="btn btn-primary" role="img" aria-label="">
+    //                 ({state.cart.length}) CART
+    //             </button>
+    //         </div>
+    //     );
+    // }
 
     return (
+        <div className="text-end" >
+            <button className="btn btn-primary" role="img" aria-label="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                ({state.cart.length}) Cart
+            </button>
 
-        <div className="cart">
-            <div className="close" onClick={toggleCart}>
-                [close]
-            </div>
-            <h2>Shopping Cart</h2>
-            {state.cart.length ? (
-                <div>
-                    {state.cart.map((item) => (
-                        <CartItem key={item._id} item={item} id={item._id} />
-                    ))}
+            {/* <!-- Cart Modal --> */}
+            <div className="modal modal-lg fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">My cart</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            {state.cart.length ? (
+                                <div>
+                                    {state.cart.map((item) => (
+                                        <CartItem key={item._id} item={item} id={item._id} />
+                                    ))}
 
-                    <div className="flex-row space-between">
-                        <strong>Total: ${calculateTotal()}</strong>
+                                    <div className="flex-row text-end">
+                                        <strong>Total: ${calculateTotal()}</strong>
 
-                        {/* {Auth.loggedIn() ? (
+                                        {/* {Auth.loggedIn() ? (
                             <button onClick={submitCheckout}>Checkout</button>
                         ) : (
                             <span>(log in to check out)</span>
                         )} */}
+                                    </div>
+                                </div>
+                            ) : (
+                                <h3>
+                                    <span role="img" aria-label="shocked">
+                                        😱
+                                    </span>
+                                    Your cart is empty!
+                                </h3>
+                            )}
+
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
+                            <button type="button" className="btn btn-primary">Checkout</button>
+                        </div>
                     </div>
                 </div>
-            ) : (
-                <h3>
-                    <span role="img" aria-label="shocked">
-                        😱
-                    </span>
-                    Your cart is empty!
-                </h3>
-            )}
+            </div>
+
         </div>
+
+
+        // <div className="cart">
+        //     <div className="close" onClick={toggleCart}>
+        //         [close]
+        //     </div>
+        //     <h2>Shopping Cart</h2>
+        //     {state.cart.length ? (
+        //         <div>
+        //             {state.cart.map((item) => (
+        //                 <CartItem key={item._id} item={item} id={item._id} />
+        //             ))}
+
+        //             <div className="flex-row space-between">
+        //                 <strong>Total: ${calculateTotal()}</strong>
+
+        //                 {/* {Auth.loggedIn() ? (
+        //                     <button onClick={submitCheckout}>Checkout</button>
+        //                 ) : (
+        //                     <span>(log in to check out)</span>
+        //                 )} */}
+        //             </div>
+        //         </div>
+        //     ) : (
+        //         <h3>
+        //             <span role="img" aria-label="shocked">
+        //                 😱
+        //             </span>
+        //             Your cart is empty!
+        //         </h3>
+        //     )}
+        // </div>
+
+
     );
 };
 

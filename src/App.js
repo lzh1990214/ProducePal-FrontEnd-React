@@ -5,7 +5,7 @@ import React from "react";
 // import VendorInfo from "./components/VendorInfo";
 import ProductInventory from "./pages/ProductInventory";
 // import { CartProvider } from './utils/cartContext';
-import { StoreProvider } from './utils/GlobalState';
+import { ProductProvider } from './utils/GlobalState';
 
 
 // const App = () => <Home />;
@@ -21,9 +21,9 @@ import { StoreProvider } from './utils/GlobalState';
 // };
 const App = () => {
     return (
-        <StoreProvider>
+        <ProductProvider>
             <ProductInventory />
-        </StoreProvider>
+        </ProductProvider>
     );
 };
 

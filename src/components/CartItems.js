@@ -48,34 +48,53 @@ const CartItem = ({ item }) => {
     // console.log(state);
 
     return (
-        <div className="flex-row">
-            <div>
-                <img
-                    src='https://placehold.co/100x100'
-                    alt=""
-                />
-            </div>
-            <div>
-                <div>{item.productName}, ${item.productPrice}/{item.productUnits}</div>
-                <div>Subtotal: ${(item.productPrice * item.purchaseQuantity).toFixed(2)}</div>
-                <div>
-                    <span>Qty:</span>
-                    <input
-                        type="number"
-                        placeholder=""
-                        value={item.purchaseQuantity}
-                        onChange={onChange}
-                    />
-                    <span
-                        role="img"
-                        aria-label="trash"
-                        onClick={() => removeFromCart(item)}
-                    >
-                        Delete
-                    </span>
+        <div className="container" >
+            <div className="row align-items-center mb-3">
+                <div className="col-md-3">
+                    <div className='d-flex flex-column align-items-center'>
+                        <img
+                            src='https://placehold.co/150x150'
+                            alt=""
+                        />
+                    </div>
                 </div>
+
+                <div className="col-md-6">
+                    <div className='d-flex flex-column align-items-start'>
+                        <div className='fs-4'>{item.productName}</div>
+                        <div className='mb-3'>{item.productDescription}</div>
+                        <div>
+                            <span>Qty:</span>
+                            <input
+                                className='ms-2'
+                                type="number"
+                                placeholder=""
+                                value={item.purchaseQuantity}
+                                onChange={onChange}
+                            />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="col-md-3">
+                    <div className='d-flex flex-column align-items-start'>
+                        <div>${item.productPrice}/{item.productUnits}</div>
+                        <div>Subtotal: ${(item.productPrice * item.purchaseQuantity).toFixed(2)}</div>
+                        <button
+                            type="button"
+                            className='btn btn-danger btn-sm mt-3'
+                            onClick={() => removeFromCart(item)}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
             </div>
-        </div>
+
+
+        </div >
     );
 }
 

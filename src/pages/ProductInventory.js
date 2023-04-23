@@ -2,19 +2,20 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useProductContext } from '../utils/GlobalState';
 import {
     UPDATE_PRODUCTS, UPDATE_CATEGORIES,
-    UPDATE_CURRENT_CATEGORY,
+    UPDATE_CURRENT_CATEGORY, TOGGLE_VENDOR_STATUS
 } from '../utils/actions';
 import productData from '../utils/products';
 import ProductSingle from '../components/ProductSingle';
 import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
+import UserToggle from '../components/UserToggle';
 
 
 const ProductInventory = () => {
 
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
-    const { currentCategory, categories, currentCategoryName, cart } = state;
+    const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
 
     // fetch products data and product categories data locally. and dispatch to STATE. need to be modified with database
     useEffect(() => {
@@ -59,20 +60,25 @@ const ProductInventory = () => {
                 (product) => product.productCategory === categories[currentCategory].name
             );
         }
-
     }
     // console.log(categories);
     // console.log(cart.length);
 
+    const toggleVendorStatus = () => {
+        dispatch({ type: TOGGLE_VENDOR_STATUS });
+    };
+
+    console.log(vendorStatus);
+
     return (
         <div className="container my-2">
-
+            <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
             <Cart />
             <h2>Farm Products</h2>
             {/* categories selection menu */}
-            <div className="dropdown">
+            <div className="dropdown mb-3 text-end">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    {currentCategoryName}
+                    {currentCategoryName ? currentCategoryName : 'Select a category'}
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     {categories.map((item) => (
@@ -113,41 +119,6 @@ const ProductInventory = () => {
         </div>
         // console.log(state)
 
-        // <div className="container">
-        //     {/* <Cart /> */}
-        //     <h1 className="text-center my-5">Farm Products Inventory</h1>
-        //     <div className="row">
-
-        //         {state.products.length ? (
-
-        //             {
-        //                 filterProducts().map((product) => (
-        //                     <div key={product._id} className="col-md-4 mb-4">
-        //                         <div className="card">
-        //                             <img src="placeholder-image.jpg" className="card-img-top" alt="placeholder" />
-        //                             <div className="card-body">
-        //                                 <h5 className="card-title">{product.productName}</h5>
-        //                                 <p className="card-text">{product.productDescription}</p>
-        //                                 <p className="card-text"><small>Category: {product.productCategory}</small></p>
-        //                                 <p className="card-text"><small>Inventory: {product.productInventory}</small></p>
-        //                                 <p className="card-text"><small>Price: ${product.productPrice}</small></p>
-        //                                 <p className="card-text"><small>Type: {product.productType ? 'Weekly Farm Produce Box' : product.productType}</small></p>
-        //                                 <p className="card-text"><small>Units: {product.productUnits}</small></p>
-        //                                 <p className="card-text"><small>Availability: {product.productAvailability}</small></p>
-        //                                 <button className="btn btn-primary mt-3" onClick={() => handleAddToCart(product)}>Add to Cart</button>
-        //                                 <button className="btn btn-primary mt-3" onClick={() => handleAddToCart(product)}>Minus from Cart</button>
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 ))
-        //             }
-        //         ) : (
-        //             <h3>You haven't added any products yet!</h3>
-        //         )}
-
-
-        //     </div>
-        // </div>
     );
 };
 
