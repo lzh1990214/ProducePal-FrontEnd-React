@@ -50,14 +50,18 @@ const cartReducer = (state, action) => {
                         total: state.total + (action.payload.price * action.payload.quantity)
                     }
                 }
-                // else if (updatedItems[minusItemIndex].quantity === 10) {
-                //     const updatedItems = state.items.filter(item => item._id !== action.payload._id);
-                //     return {
-                //         ...state,
-                //         items: updatedItems,
-                //         total: state.total - (action.payload.price * action.payload.quantity)
-                //     };
-                // }
+            }
+
+        case 'UPDATE_QUANTITY':
+            const updateItemIndex = state.items.findIndex(item => item._id === action.payload._id);
+            if (updateItemIndex !== -1) {
+                const updatedItems = [...state.items];
+                updatedItems[updateItemIndex].quantity = action.payload.quantity;
+                return {
+                    ...state,
+                    items: updatedItems,
+                    total: action.payload.price * action.payload.quantity
+                };
             }
 
 

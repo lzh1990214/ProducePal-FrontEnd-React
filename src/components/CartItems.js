@@ -19,28 +19,23 @@ const CartItem = ({ item }) => {
         dispatch({ type: 'MINUS_ITEM', payload: item });
     }
 
-    // const handleQuantityChange = (event) => {
-    //     const newQuantity = parseInt(event.target.value);
-    //     if (newQuantity > 0) {
-    //         const updatedItem = { ...item, quantity: newQuantity };
-    //         dispatch({ type: 'ADD_ITEM', payload: updatedItem });
-    //     }
-    // };
+    const handleQuantityChange = (event) => {
+        const newQuantity = parseInt(event.target.value);
+        if (newQuantity > 1) {
+            const updatedItem = { ...item, quantity: newQuantity };
+            dispatch({ type: 'UPDATE_QUANTITY', payload: updatedItem });
+        }
+    };
 
     return (
         <div className="d-flex align-items-center justify-content-between my-3">
             <div>
                 <h5>{item.productName}</h5>
-                {/* <div className="input-group input-group-sm">
+                <div className="input-group  input-group-sm mb-3">
                     <button className="btn btn-outline-secondary" type="button" onClick={handleMinus}>-</button>
-                    <input type="number" className="form-control" placeholder="0" value={item.quantity} />
+                    <input type="text" className="form-control" placeholder={`${item.quantity}`} onChange={handleQuantityChange} />
                     <button className="btn btn-outline-secondary" type="button" onClick={handlePlus}>+</button>
-                </div> */}
-                <div className="input-group mb-3">
-                    <button className="btn btn-outline-secondary" type="button" onClick={handleMinus}>Button</button>
-                    <button className="btn btn-outline-secondary" type="button" onClick={handlePlus}>Button</button>
-                    {/* <input type="text" className="form-control" placeholder="0" value={item.quantity} /> */}
-                    <input type="text" className="form-control" placeholder={`${item.quantity}`} />
+
                 </div>
                 <p className="text-muted">${(item.price * item.quantity).toFixed(2)}</p>
             </div>

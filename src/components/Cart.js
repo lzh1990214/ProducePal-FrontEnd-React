@@ -10,6 +10,8 @@ const Cart = () => {
         setCartVisible(!cartVisible);
     };
 
+    console.log(cartState);
+
     return (
         <div className="cart">
             <button className="btn btn-primary" onClick={handleToggleCart}>
